@@ -1,24 +1,24 @@
 const express = require('express');
 
-const userController = require('../controllers/userController');
+module.exports = users => {
+    const userController = require('../controllers/userController')(users);
 
-const userRouter = express.Router();
+    const userRouter = express.Router();
+    userRouter.use('/', userController.parseFields);
 
+    userRouter.route('/')
+        .post(userController.postUser)
+        .get(userController.getUsers);
 
-userRouter.use('/', userController.parseFields);
+    userRouter.use(
+        '/:id',
+        userController.findUser,
+        userController.verifyApiKey);
 
-userRouter.route('/')
-    .post(userController.postUser)
-    .get(userController.getUsers);
+    userRouter.route('/:id')
+        .get(userController.getUser)
+        .patch(userController.patchUser)
+        .delete(userController.deleteUser);
 
-userRouter.use(
-    '/:id', 
-    userController.findUser,
-    userController.verifyApiKey);
-
-userRouter.route('/:id')
-    .get(userController.getUser)
-    .patch(userController.patchUser)
-    .delete(userController.deleteUser);
-
-module.exports = userRouter;
+    return userRouter;
+};
