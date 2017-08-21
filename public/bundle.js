@@ -27943,7 +27943,7 @@ TabContent.childContextTypes = childContextTypes;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var apiHost = exports.apiHost =  true ? "https://iiaas-server.herokuapp.com" : 'http://localhost:3000';
+var apiHost = exports.apiHost =  true ? "https://incrementmyinteger.herokuapp.com" : 'http://localhost:3000';
 
 /***/ }),
 /* 139 */
