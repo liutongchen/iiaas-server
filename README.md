@@ -12,7 +12,7 @@ IIaaS is hosted on: https://incrementmyinteger.herokuapp.com/
 
 If you want to try it locally, you can do the following:
 
-1. Clone this repository: `git clone https://github.com/liutongchen/`
+1. Clone this repository: `https://github.com/liutongchen/iiaas-server`
 
 2. Instatll packages: `npm install`
 
