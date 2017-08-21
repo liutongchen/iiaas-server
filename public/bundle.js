@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = React;
+module.exports = react;
 
 /***/ }),
 /* 1 */
@@ -894,7 +894,7 @@ function toArray(children) {
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = ReactDOM;
+module.exports = react-dom;
 
 /***/ }),
 /* 15 */
@@ -1302,7 +1302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 27 */
 /***/ (function(module, exports) {
 
-module.exports = Redux;
+module.exports = redux;
 
 /***/ }),
 /* 28 */
