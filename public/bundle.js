@@ -63976,7 +63976,17 @@ var NumberPanel = function NumberPanel(_ref) {
     return _react2.default.createElement(
         _reactBootstrap.Panel,
         { header: title },
-        number
+        number,
+        _react2.default.createElement(
+            _reactBootstrap.Button,
+            { bsStyle: 'primary' },
+            'Get'
+        ),
+        _react2.default.createElement(
+            _reactBootstrap.Button,
+            { bsStyle: 'primary' },
+            'Set'
+        )
     );
 };
 
@@ -74976,7 +74986,8 @@ var RegisterPage = function (_React$Component) {
             this.props.actions.registerStart();
             var payload = {
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                currentNumber: this.state.currentNumber
             };
 
             var request = {
@@ -75056,7 +75067,6 @@ var RegisterPage = function (_React$Component) {
                             type: 'text',
                             className: 'form-control',
                             name: 'initialNumber',
-                            placeholder: '0',
                             value: this.state.currentNumber,
                             onChange: this.handleNumberChange,
                             required: true })
