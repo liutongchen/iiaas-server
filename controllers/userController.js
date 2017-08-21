@@ -30,9 +30,10 @@ module.exports = users => {
     // Request handlers
 
     const postUser = (req, res) => {
+        console.log(req.body);
         const newUser = createNewRecord(req.body);
         users.set(newUser.id, newUser);
-        res.status(201).send(newUser);
+        res.status(201).json(newUser);
     };
 
     const getUsers = (req, res) => {
