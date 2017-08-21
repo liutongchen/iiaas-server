@@ -24,13 +24,12 @@ module.exports = users => {
         "email": data.email,
         "password": data.password,
         "apiKey": guid(),
-        "currentNumber": 0,
+        "currentNumber": _.toInteger(data.currentNumber) || 0,
     });
 
     // Request handlers
 
     const postUser = (req, res) => {
-        console.log(req.body);
         const newUser = createNewRecord(req.body);
         users.set(newUser.id, newUser);
         res.status(201).json(newUser);
@@ -62,11 +61,15 @@ module.exports = users => {
 
         if (_.toUpper(req.body.currentNumber) === "INC") {
             ++req.user.currentNumber;
-        } else if (_.isInteger(req.body.currentNumber) && req.body.currentNumber >= 0) {
-            req.user.currentNumber = req.body;
         } else if (req != null) {
-            res.status(400).send("Invalid currentNumber. It has to be non-negative integer.");
-            return;
+            const integer = _.toInteger(req.body.currentNumber);
+
+            if (_.isInteger(integer) && integer >= 0) {
+                req.user.currentNumber = integer;
+            } else {
+                res.status(400).send("Invalid currentNumber. It has to be non-negative integer.");
+                return;
+            }
         }
 
         const result = req.fields ? _.pick(req.user, req.fields) : req.user;
