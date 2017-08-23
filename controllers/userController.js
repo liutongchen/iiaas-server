@@ -53,11 +53,11 @@ module.exports = users => {
     const patchUser = (req, res) => {
         const writableFields = ["email", "password"];
 
-        _.forEach(req.body, key => {
+        for (const key in req.body) {
             if (_.includes(writableFields, key)) {
                 req.user[key] = req.body[key];
             }
-        });
+        };
 
         if (_.toUpper(req.body.currentNumber) === "INC") {
             ++req.user.currentNumber;
@@ -88,7 +88,7 @@ module.exports = users => {
         if (req.query.fields) {
             req.fields = _.map(req.query.fields.split(','), field => field.trim());
         }
-
+        
         next();
     };
 
